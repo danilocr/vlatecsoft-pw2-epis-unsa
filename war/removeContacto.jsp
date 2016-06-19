@@ -88,8 +88,8 @@
 					<a href="#">Mensajes</a>
 					<ul class="children">
 						<li><a href="getListContacto.jsp">Lista de Mensajes</a></li>
-						<li><a href="updateContacto.jsp">Actualización de Mensajes</a></li>
-						<li><a href="removeContacto.jsp">Eliminación de Mensajes</a></li>
+						<li><a href="#">Actualización de Mensajes</a></li>
+						<li><a href="#">Eliminación de Mensajes</a></li>
 					</ul>
 				</li>
 				
@@ -103,7 +103,42 @@
 <div class="top">
 	<div class="page-title">
 		<div class="container">
-			<div class="h1color"><h1>Bienvenido</h1></div>
+			<div class="h1color"><h1>Eliminar Consulta</h1></div>
+		</div>
+		<div class="container">
+			<div class="h1color">
+			
+<%@ page import="ServicesModel.*" import="java.util.List"
+	import="javax.jdo.Query" import="javax.jdo.PersistenceManager"
+%>
+<% 	PersistenceManager pm = PMF.get().getPersistenceManager();
+	Query q = pm.newQuery(Contacto.class);
+	List<Contacto> p = (List<Contacto>) q.execute();%>
+	<table border='4'>
+	<tr>
+		<th WIDTH="30"> N </th>
+		<th WIDTH="200"> Nombre </th>
+		<th WIDTH="250"> Correo </th>
+		<th WIDTH="450"> Comentario </th>
+		<th WIDTH="120"> Estado </th>
+		<th WIDTH="120"> Opcion </th>
+	</tr>
+		<% for(int i=0;i<p.size();i++){ %>
+		<% String estado= (p.get(i).getContest())? "Contestado":"No Contestado"; %>
+			<form action="removeContacto" method="post">
+				<tr>
+					<input type="hidden"  name="indice" value="<%=i+1%>">
+					<td><%=i+1%></td>
+					<td><%=p.get(i).getName()%></td>
+					<td><%=p.get(i).getEmail()%></td>
+					<td><%=p.get(i).getComentary()%></td>
+					<td><%=estado%></td>
+					<td><input style='background-color: #FF9900' type='submit' value='Eliminar'></td>
+				</tr>
+			</form>
+		<%} %>
+		</table>
+			</div>
 		</div>
 	</div>
 </div>

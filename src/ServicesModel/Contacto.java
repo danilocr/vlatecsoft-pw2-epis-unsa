@@ -18,20 +18,20 @@ public class Contacto {
 	private String name;
 	
 	@Persistent
-	private String lastname;
-	
-	@Persistent
 	private String email;
 	
 	@Persistent
 	private String comentary;
-
-	public Contacto(String name, String lastname, String email, String comentary) {
+	
+	@Persistent
+	private boolean contest;
+	
+	public Contacto(String name, String email, String comentary,boolean contest) {
 		super();
 		this.name = name;
-		this.lastname = lastname;
 		this.email = email;
 		this.comentary = comentary;
+		this.contest = contest;
 	}
 
 	public String getName() {
@@ -40,14 +40,6 @@ public class Contacto {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
 	}
 
 	public String getEmail() {
@@ -73,10 +65,18 @@ public class Contacto {
     public void setKey(Key key) {
         this.key = key;
     }
+    
+    public boolean getContest() {
+		return contest;
+	}
+
+	public void setContest(boolean contest) {
+		this.contest = contest;
+	}
 	
 	@Override
 	public String toString() {
-		String resp = "<br> Nombre : "+name + " <br> Apellido : " + lastname + " <br> Email : " + email + " <br> Color : " + comentary+"<br><br>";  
+		String resp = "<br> Nombre : "+name + " <br> Email : " + email + " <br> Color : " + comentary+"<br><br>";  
 		return resp;
 	}
 }
