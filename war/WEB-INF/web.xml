@@ -24,4 +24,23 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>LoginController</servlet-name>
 		<url-pattern>/LoginController</url-pattern>
 	</servlet-mapping>
+	
+	   	<servlet>
+      <servlet-name>removeContacto</servlet-name>
+      <servlet-class>contacto.removeContacto</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>removeContacto</servlet-name>
+      <url-pattern>/removeContacto</url-pattern>
+   </servlet-mapping>
+   
+   	   	<servlet>
+      <servlet-name>updateContacto</servlet-name>
+      <servlet-class>contacto.updateContacto</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>updateContacto</servlet-name>
+      <url-pattern>/updateContacto</url-pattern>
+   </servlet-mapping>
+   
 </web-app>

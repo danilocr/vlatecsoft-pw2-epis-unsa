@@ -1,33 +1,34 @@
-package Controllers;
+package contacto;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
+import javax.jdo.Query;
 import javax.servlet.http.*;
 
 import ServicesModel.Contacto;
 import ServicesModel.PMF;
 
 @SuppressWarnings("serial")
-public class SaveContacto extends HttpServlet {
+public class removeContacto extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		
-		String name = req.getParameter("name");
-		String email = req.getParameter("email");
-		String comentary = req.getParameter("comentary");
-		
-		Contacto p = new Contacto(name, email, comentary,false);
+		String indice = req.getParameter("indice");
+		int i=Integer.parseInt(indice)-1;
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		resp.setContentType("text/html");
+		Query q = pm.newQuery(Contacto.class);
 		
 		try{
-			pm.makePersistent(p);
-			resp.sendRedirect("sucess.jsp");
+			List<Contacto> Contactos = (List<Contacto>) q.execute();
+			pm.deletePersistent(Contactos.get(i));
+			resp.sendRedirect("removeContacto.jsp");
 			
 		}catch(Exception e){
 			System.out.println(e);
-			resp.sendRedirect("error.jsp");
+			resp.sendRedirect("removeContacto.jsp");
 		}finally{
 			pm.close();
 		}

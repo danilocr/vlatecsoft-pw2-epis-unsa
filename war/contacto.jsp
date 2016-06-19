@@ -141,7 +141,7 @@
 		   <input style="font-size:16px; text-align:left;color:black;background-color:#ffffff;" name="name" placeholder="Nombre" required><br />
 		 
 			<label for="email">E-mail:</label>
-			<input style="font-size:16px; text-align:left;color:black;background-color:#ffffff; name="email" placeholder="ejemplo@gmail.com" type="email" required><br />
+			<input style="font-size:16px; text-align:left;color:black;background-color:#ffffff; type="email" name="email" placeholder="ejemplo@gmail.com"  required><br />
 		 	
 		 	<label for="message">Tu comentario:</label><br />
 			<textarea  style="font-size:16px; text-align:left;color:black;background-color:#ffffff; id="message" placeholder="Escribenos un Comentario..." class="input" name="comentary" rows="10" cols="40" required></textarea><br />
